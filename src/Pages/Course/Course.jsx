@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import './Course.css';
 
 const Course = () => {
   const [courses, setCourses] = useState([]);
@@ -22,7 +23,7 @@ const Course = () => {
 
         const data = await response.json();
         if (data?.status_code === 200) {
-          setCourses(data?.data); // Assuming response contains the 'data' array with courses
+          setCourses(data?.data?.data);
         } else {
           alert(`Error: ${data?.status_message}`);
         }
@@ -39,8 +40,11 @@ const Course = () => {
     <div className="courses-container">
       <h2 className="heading">Available Courses</h2>
       <div className="courses-grid">
-        {courses.map((course) => (
+        {courses?.map((course) => (
           <div key={course.id} className="course-card">
+            <div className="course-image">
+              <img src={course.image} alt={course.title} />
+            </div>
             <div className="course-card-header" style={{ backgroundColor: course.badge_color }}>
               <span className="badge">{course.badge_text}</span>
             </div>
