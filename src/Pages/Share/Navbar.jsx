@@ -3,9 +3,12 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
     const navItems = <>
-    <Link to={'/course'}>
-    <li>Course</li>
-    </Link>
+    
+    <li><Link to={'/course'}>Course</Link></li>
+   
+    
+    <li><Link to={'/add-course'}>Add Course</Link></li>
+    
     </>
     return (
         <div className="navbar bg-base-100">

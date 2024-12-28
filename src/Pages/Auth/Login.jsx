@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import FormContainer from '../Share/FormContainer';
+import { useNavigate } from 'react-router-dom';
 
 const Login = ({ setToken }) => {
+    const navigate = useNavigate()
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -29,7 +31,8 @@ const Login = ({ setToken }) => {
         alert('Login successful!');
         const token = data?.data?.token;
         localStorage.setItem('authToken', token);
-        setToken(token); // Use the token for further requests
+        setToken(token);
+        navigate('/')
       } else {
         alert(`Error: ${data?.status_message}`);
       }
